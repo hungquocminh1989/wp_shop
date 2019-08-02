@@ -23,7 +23,7 @@ $flatsome_icon = '<svg style="width:20px; margin-top:-4px; height:20px;vertical-
 
 $wp_admin_bar->add_menu( array(
  'id' => 'flatsome_panel',
- 'title' => $flatsome_icon.' WebDaiTin',
+ 'title' => $flatsome_icon.' Secret',
  'href' => $panel_url
 ));
 

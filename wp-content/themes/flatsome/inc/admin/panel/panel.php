@@ -34,7 +34,7 @@ class Flatsome_Admin {
 	public function flatsome_panel_register_menu() {
 		$url = admin_url().'admin.php?page=flatsome-panel';
 
-		add_menu_page( 'Welcome to Flatsome', 'WebDaiTin', 'manage_options', 'flatsome-panel', array( $this, 'flatsome_panel_welcome' ), get_template_directory_uri().'/assets/img/logo-icon.svg', '2');
+		add_menu_page( 'Welcome to Flatsome', 'Secret', 'manage_options', 'flatsome-panel', array( $this, 'flatsome_panel_welcome' ), get_template_directory_uri().'/assets/img/logo-icon.svg', '2');
 		
 		add_submenu_page('flatsome-panel', 'Theme License', 'Theme License', 'manage_options', 'admin.php?page=flatsome-panel' );
 
