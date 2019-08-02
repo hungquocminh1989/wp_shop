@@ -10,6 +10,7 @@ add_action( 'after_setup_theme',  function(){
 	repoLoadPluginFromZip('nextend-facebook-connect', 'nextend-facebook-connect.php');
 	repoLoadPluginFromZip('woosidebars', 'woosidebars.php');
 	repoLoadPluginFromZip('yith-woocommerce-wishlist', 'init.php');
+	repoLoadPluginFromZip('wp-reset', 'wp-reset.php');
 	//repoLoadPluginFromStore();
 	
 });

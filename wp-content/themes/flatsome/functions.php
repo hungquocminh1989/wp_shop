@@ -13,7 +13,7 @@ locate_template('/core/init.php', TRUE);
 */
 
 //Disable classic editor
-//add_filter( 'use_block_editor_for_post', '__return_false' );
+add_filter( 'use_block_editor_for_post', '__return_false' );
 
 /**
  * Flatsome functions and definitions
