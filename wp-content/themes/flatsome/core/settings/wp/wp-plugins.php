@@ -11,6 +11,7 @@ add_action( 'after_setup_theme',  function(){
 	repoLoadPluginFromZip('woosidebars', 'woosidebars.php');
 	repoLoadPluginFromZip('yith-woocommerce-wishlist', 'init.php');
 	repoLoadPluginFromZip('wp-reset', 'wp-reset.php');
+	repoLoadPluginFromZip('backwpup', 'backwpup.php');
 	//repoLoadPluginFromStore();
 	
 });
