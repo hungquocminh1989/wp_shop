@@ -47,6 +47,7 @@ locate_template('/core/settings/wp/wp-post-type.php', TRUE);
 |-------------------------------------------------------------------------- 
 */
 locate_template('/core/settings/wc/wc-admin-product-option.php', TRUE);
+locate_template('/core/settings/wc/wc-translates.php', TRUE);
 
 /*
 |--------------------------------------------------------------------------
