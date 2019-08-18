@@ -2,3 +2,4 @@ Loco Translate
 Smart Manager
 Themify - WooCommerce Product Filter
 WP Super Cache
+WooCommerce Quick Buy

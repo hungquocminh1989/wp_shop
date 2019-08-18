@@ -1,0 +1,47 @@
+﻿A. Basic Settings
+	1) Kiểm tra plugins đã hoạt động đầy đủ chưa
+	
+	2) Permalink Settings
+	- Post name
+	- Product tag base = nhom-san-pham
+	- Product category base = danh-muc
+	- Custom base = san-pham
+	- Your homepage displays
+
+	3) WooCommerce Settings
+	...
+
+	4) Pages
+	Tạo các Page liên quan
+	- Trang Chủ
+	- Liên Hệ
+	- Tin Tức
+	...
+
+	5) Menus
+	- Tạo các menu liên kết với Page ở (1)
+		Ví dụ :
+		- Trang Chủ
+		- Liên Hệ
+		- Tin Tức
+		...
+	- Tạo các menu custom link để gắn với Woo Product Catalog
+	
+B. Design Settings
+	1) Tạo Blocks hiển thị
+	
+	2) Tạo Page hiển thị
+	
+	3) 
+	
+	
+C. Tạo bố cục trang web
+	1) Header
+	2) Footer
+	3) Shop layout
+		- Product
+		- Catalog Product
+		- Product single
+	4) Layout của các trang đặc biệt
+		Ví dụ như [Trang Chủ]
+	5) Blog layout
