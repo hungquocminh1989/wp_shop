@@ -26,11 +26,15 @@
 		- Tin Tức
 		...
 	- Tạo các menu custom link để gắn với Woo Product Catalog
+	- Tạo các menu phân loại theo tag (Nếu cần)
+	- Tạo các menu phân loại theo attribute (Nếu cần)
 	
 B. Design Settings
 	1) Tạo Blocks hiển thị
+		Ưu tiên tạo Block cho những vùng có thể sử dụng lại
 	
 	2) Tạo Page hiển thị
+		Gọi các Blocks đã tạo
 	
 	3) 
 	
