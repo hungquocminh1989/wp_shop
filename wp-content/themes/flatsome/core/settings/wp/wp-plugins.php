@@ -12,6 +12,13 @@ add_action( 'after_setup_theme',  function(){
 	repoLoadPluginFromZip('yith-woocommerce-wishlist', 'init.php');
 	repoLoadPluginFromZip('wp-reset', 'wp-reset.php');
 	repoLoadPluginFromZip('backwpup', 'backwpup.php');
+	repoLoadPluginFromZip('loco-translate', 'loco.php');
+	repoLoadPluginFromZip('menu-icons', 'menu-icons.php');
+	repoLoadPluginFromZip('smart-manager-for-wp-e-commerce', 'smart-manager.php');
+	repoLoadPluginFromZip('woo-checkout-field-editor-pro', 'checkout-form-designer.php');
+	repoLoadPluginFromZip('wp-super-cache', 'wp-cache.php');
+	repoLoadPluginFromZip('woocommerce-quick-buy', 'woocommerce-quick-buy.php');
+	repoLoadPluginFromZip('yith-woocommerce-tab-manager-premium', 'init.php');
 	//repoLoadPluginFromStore();
 	
 });
