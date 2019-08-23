@@ -19,6 +19,8 @@ add_action( 'after_setup_theme',  function(){
 	repoLoadPluginFromZip('wp-super-cache', 'wp-cache.php');
 	repoLoadPluginFromZip('woocommerce-quick-buy', 'woocommerce-quick-buy.php');
 	repoLoadPluginFromZip('yith-woocommerce-tab-manager-premium', 'init.php');
+	repoLoadPluginFromZip('themify-wc-product-filter', 'themify-wc-product-filter.php');
+	repoLoadPluginFromZip('wordpress-importer', 'wordpress-importer.php');
 	//repoLoadPluginFromStore();
 	
 });
