@@ -21,7 +21,7 @@ add_action( 'after_setup_theme',  function(){
 	repoLoadPluginFromZip('yith-woocommerce-tab-manager-premium', 'init.php');
 	repoLoadPluginFromZip('wordpress-importer', 'wordpress-importer.php');
 	repoLoadPluginFromZip('premmerce-woocommerce-product-filter', 'premmerce-filter.php');
-	repoLoadPluginFromZip('call-now-button', 'call-now-button.php');
+	repoLoadPluginFromZip('quick-call-button', 'quick-call-button.php');
 	//repoLoadPluginFromStore();
 	
 });
