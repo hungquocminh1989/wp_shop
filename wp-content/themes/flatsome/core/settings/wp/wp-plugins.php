@@ -21,7 +21,7 @@ add_action( 'after_setup_theme',  function(){
 	repoLoadPluginFromZip('yith-woocommerce-tab-manager-premium', 'init.php');
 	repoLoadPluginFromZip('themify-wc-product-filter', 'themify-wc-product-filter.php');
 	repoLoadPluginFromZip('wordpress-importer', 'wordpress-importer.php');
-	repoLoadPluginFromZip('woocommerce-ajax-filters', 'woocommerce-filters.php');
+	repoLoadPluginFromZip('woocommerce-products-filter', 'index.php');
 	//repoLoadPluginFromStore();
 	
 });
