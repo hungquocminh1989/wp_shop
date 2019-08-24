@@ -22,6 +22,7 @@ add_action( 'after_setup_theme',  function(){
 	repoLoadPluginFromZip('themify-wc-product-filter', 'themify-wc-product-filter.php');
 	repoLoadPluginFromZip('wordpress-importer', 'wordpress-importer.php');
 	repoLoadPluginFromZip('woocommerce-products-filter', 'index.php');
+	repoLoadPluginFromZip('premmerce-woocommerce-product-filter', 'premmerce-filter.php');
 	//repoLoadPluginFromStore();
 	
 });
