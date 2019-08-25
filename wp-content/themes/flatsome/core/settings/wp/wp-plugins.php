@@ -22,7 +22,7 @@ add_action( 'after_setup_theme',  function(){
 	repoLoadPluginFromZip('wordpress-importer', 'wordpress-importer.php');
 	repoLoadPluginFromZip('premmerce-woocommerce-product-filter', 'premmerce-filter.php');
 	repoLoadPluginFromZip('quick-call-button', 'quick-call-button.php');
-	repoLoadPluginFromZip('fb-messenger-live-chat', 'fb-messenger-live-chat.php');
+	repoLoadPluginFromZip('facebook-messenger-customer-chat', 'facebook-messenger-customer-chat.php');
 	//repoLoadPluginFromStore();
 	
 });
