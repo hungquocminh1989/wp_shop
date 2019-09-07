@@ -27,6 +27,7 @@ add_action( 'after_setup_theme',  function(){
 	repoLoadPluginFromZip('really-simple-ssl', 'rlrsssl-really-simple-ssl.php');
 	repoLoadPluginFromZip('wordpress-seo', 'wp-seo.php');
 	repoLoadPluginFromZip('cloudflare', 'cloudflare.php');
+	repoLoadPluginFromZip('filebird', 'filebird.php');
 	//repoLoadPluginFromStore();
 	
 });
