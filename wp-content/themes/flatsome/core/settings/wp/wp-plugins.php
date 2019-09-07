@@ -25,7 +25,8 @@ add_action( 'after_setup_theme',  function(){
 	repoLoadPluginFromZip('facebook-messenger-customer-chat', 'facebook-messenger-customer-chat.php');
 	repoLoadPluginFromZip('search-and-replace', 'inpsyde-search-replace.php');
 	repoLoadPluginFromZip('really-simple-ssl', 'rlrsssl-really-simple-ssl.php');
-	repoLoadPluginFromZip('wordpress-seo', 'wp-seo-main.php');
+	repoLoadPluginFromZip('wordpress-seo', 'wp-seo.php');
+	repoLoadPluginFromZip('cloudflare', 'cloudflare.php');
 	//repoLoadPluginFromStore();
 	
 });
