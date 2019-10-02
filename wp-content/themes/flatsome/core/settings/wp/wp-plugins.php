@@ -28,7 +28,7 @@ add_action( 'after_setup_theme',  function(){
 	repoLoadPluginFromZip('wordpress-seo', 'wp-seo.php');
 	repoLoadPluginFromZip('cloudflare', 'cloudflare.php');
 	repoLoadPluginFromZip('filebird', 'filebird.php');
-	repoLoadPluginFromZip('color-and-image-swatches-for-variable-product-attributes', 'plugin.php');
+	repoLoadPluginFromZip('woo-variation-swatches', 'woo-variation-swatches.php');
 	//repoLoadPluginFromStore();
 	
 });
