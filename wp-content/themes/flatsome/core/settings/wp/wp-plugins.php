@@ -29,6 +29,7 @@ add_action( 'after_setup_theme',  function(){
 	repoLoadPluginFromZip('cloudflare', 'cloudflare.php');
 	repoLoadPluginFromZip('filebird', 'filebird.php');
 	repoLoadPluginFromZip('woo-variation-swatches', 'woo-variation-swatches.php');
+	repoLoadPluginFromZip('woo-variation-swatches-pro', 'woo-variation-swatches-pro.php');
 	//repoLoadPluginFromStore();
 	
 });
