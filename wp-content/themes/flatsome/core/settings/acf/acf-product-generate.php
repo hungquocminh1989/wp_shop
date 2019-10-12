@@ -37,7 +37,7 @@ acf_add_local_field_group(array(
 			'name' => 'fb_group_noi_dung_san_pham',
 			'type' => 'textarea',
 			'instructions' => '',
-			'required' => 1,
+			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
 				'width' => '',
@@ -56,7 +56,7 @@ acf_add_local_field_group(array(
 			'name' => 'fb_group_thong_tin_bao_hanh',
 			'type' => 'textarea',
 			'instructions' => '',
-			'required' => 1,
+			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
 				'width' => '',
@@ -77,7 +77,7 @@ acf_add_local_field_group(array(
 			'name' => 'fb_group_thong_tin_lien_he',
 			'type' => 'textarea',
 			'instructions' => '',
-			'required' => 1,
+			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
 				'width' => '',
@@ -96,7 +96,7 @@ acf_add_local_field_group(array(
 			'name' => 'fb_group_thong_tin_lien_ket',
 			'type' => 'textarea',
 			'instructions' => '',
-			'required' => 1,
+			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
 				'width' => '',
@@ -159,7 +159,7 @@ acf_add_local_field_group(array(
 			'name' => 'fb_page_noi_dung_san_pham',
 			'type' => 'textarea',
 			'instructions' => '',
-			'required' => 1,
+			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
 				'width' => '',
@@ -178,7 +178,7 @@ acf_add_local_field_group(array(
 			'name' => 'fb_page_thong_tin_bao_hanh',
 			'type' => 'textarea',
 			'instructions' => '',
-			'required' => 1,
+			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
 				'width' => '',
@@ -199,7 +199,7 @@ acf_add_local_field_group(array(
 			'name' => 'fb_page_thong_tin_lien_he',
 			'type' => 'textarea',
 			'instructions' => '',
-			'required' => 1,
+			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
 				'width' => '',
@@ -218,7 +218,7 @@ acf_add_local_field_group(array(
 			'name' => 'fb_page_thong_tin_lien_ket',
 			'type' => 'textarea',
 			'instructions' => '',
-			'required' => 1,
+			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
 				'width' => '',
@@ -281,7 +281,7 @@ acf_add_local_field_group(array(
 			'name' => 'fb_profile_noi_dung_san_pham',
 			'type' => 'textarea',
 			'instructions' => '',
-			'required' => 1,
+			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
 				'width' => '',
@@ -300,7 +300,7 @@ acf_add_local_field_group(array(
 			'name' => 'fb_profile_thong_tin_bao_hanh',
 			'type' => 'textarea',
 			'instructions' => '',
-			'required' => 1,
+			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
 				'width' => '',
@@ -321,7 +321,7 @@ acf_add_local_field_group(array(
 			'name' => 'fb_profile_thong_tin_lien_he',
 			'type' => 'textarea',
 			'instructions' => '',
-			'required' => 1,
+			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
 				'width' => '',
@@ -340,7 +340,7 @@ acf_add_local_field_group(array(
 			'name' => 'fb_profile_thong_tin_lien_ket',
 			'type' => 'textarea',
 			'instructions' => '',
-			'required' => 1,
+			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
 				'width' => '',
