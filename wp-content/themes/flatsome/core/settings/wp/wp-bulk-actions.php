@@ -22,73 +22,74 @@ function register_my_bulk_actions( $bulk_actions ) {
 /**
  * Handles the bulk action.
  */
+ use PhpOffice\PhpSpreadsheet\Spreadsheet;
+	use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 	if ( $action !== 'export_to_excel') {
 		return $redirect_to;
 	}
-	use PhpOffice\PhpSpreadsheet\Spreadsheet;
-	use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+	
 	$arr_products = [];
 	$arr_products[] = ['No.', 'Product Name', 'Contents', 'Images'];
 	$arr_pages = [];
 	$arr_pages[] = ['No.', 'Token'];
 	
-	foreach ( $post_ids as $key => $post_id ) {
-		//repoPostToFacebook($post_id, $action);
-		//Get account token
-		$args['post_type'] = 'token';
-		$args['meta_key'] = 'fb_trang_thai';
-		$args['meta_value'] = 0;
-		$the_query = new WP_Query( $args );
-		if ( $the_query->have_posts() ) {
-		    while ( $the_query->have_posts() ) {
-		    	$the_query->the_post();
+	$args['post_type'] = 'token';
+	$args['meta_key'] = 'fb_trang_thai';
+	$args['meta_value'] = 0;
+	$the_query = new WP_Query( $args );
+	if ( $the_query->have_posts() ) {
+	    while ( $the_query->have_posts() ) {
+	    	$the_query->the_post();
+			
+			$arr_token = explode("\r\n", get_field('fb_access_token_truy_cap_page'));
+			
+			foreach( $arr_token as $k => $token_page ) {
 				
-				$arr_token = explode("\r\n", get_field('fb_access_token_truy_cap_page'));
+				$arr_pages[] = [$k + 1, $token_page];
 				
-				foreach( $arr_token as $k => $token_page ) {
-					
-					$arr_pages[] = [$k, token_page];
-					
-					if($token_page != ''){
-						
-						//Get data product
-						$product = wc_get_product($id);
-						if($product != NULL && count($product) > 0){
-							
-							$gia_san_pham = $product->price;
-							$gia_san_pham_ctv = get_post_meta($product->id, 'ctv_price', true );
-							
-							//Get images
-							$attachment_ids = $product->get_gallery_attachment_ids();
-							foreach( $attachment_ids as $attachment_id ) {
-								$attachments[] = wp_get_attachment_image_src( $attachment_id, 'full' )[0];
-							}
-							$images_str = explode("\r\n", $attachments);
-							
-							$fb_tieu_de = get_field('fb_page_tieu_de', $product->id);
-							$fb_noi_dung_san_pham = get_field('fb_page_noi_dung_san_pham', $product->id);
-							$fb_thong_tin_bao_hanh = get_field('fb_page_thong_tin_bao_hanh', $product->id);
-							$fb_thong_tin_lien_he = get_field('fb_page_thong_tin_lien_he', $product->id);
-							$fb_thong_tin_lien_ket = get_field('fb_page_thong_tin_lien_ket', $product->id);
-							$main_page_content = "
-								$fb_tieu_de
-								$fb_noi_dung_san_pham
-								$fb_thong_tin_bao_hanh
-								Giá bán : $gia_san_pham
-								$fb_thong_tin_lien_he
-								$fb_thong_tin_lien_ket
-							";
-
-							$arr_products[]	= [$key + 1, '', $main_page_content, $images_str];			
-							
-						}
-						
-					}
-				}
-		    }
+			}
+			
 		}
-		wp_reset_postdata();
+		
+	}
+	wp_reset_postdata();
+	
+	foreach ( $post_ids as $key => $post_id ) {
+		//Get data product
+		$product = wc_get_product($post_id);
+		
+		if($product != NULL){
+			
+			$gia_san_pham = $product->price;
+			$gia_san_pham_ctv = get_post_meta($product->id, 'ctv_price', true );
+			
+			//Get images
+			$attachment_ids = $product->get_gallery_attachment_ids();
+			
+			foreach( $attachment_ids as $attachment_id ) {
+				$attachments[] = wp_get_attachment_image_src( $attachment_id, 'full' )[0];
+			}
+			
+			$images_str = implode("\r\n", $attachments);
+			
+			$fb_tieu_de = get_field('fb_page_tieu_de', $product->id);
+			$fb_noi_dung_san_pham = get_field('fb_page_noi_dung_san_pham', $product->id);
+			$fb_thong_tin_bao_hanh = get_field('fb_page_thong_tin_bao_hanh', $product->id);
+			$fb_thong_tin_lien_he = get_field('fb_page_thong_tin_lien_he', $product->id);
+			$fb_thong_tin_lien_ket = get_field('fb_page_thong_tin_lien_ket', $product->id);
+			$main_page_content = "
+				$fb_tieu_de
+				$fb_noi_dung_san_pham
+				$fb_thong_tin_bao_hanh
+				Giá bán : $gia_san_pham
+				$fb_thong_tin_lien_he
+				$fb_thong_tin_lien_ket
+			";
+
+			$arr_products[]	= [$key + 1, '', $main_page_content, $images_str];			
+			
+		}
 	}
 	
 	//Sheet Products
@@ -123,10 +124,10 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 	
 	//Save file
 	$writer = new Xlsx($spreadsheet);
-	$writer->save('wp-content/themes/flatsome/core/test.xlsx');
-
+	$writer->save(WP_CONTENT_DIR . '/download/export.xlsx');
+	download_url(content_url() . '/download/export.xlsx');
 	$redirect_to = add_query_arg( 'bulk_reposts', count( $post_ids ), $redirect_to );
-
+	
 	return $redirect_to;
 }
 
@@ -139,7 +140,7 @@ function my_bulk_action_admin_notice() {
 
 		printf(
 			'<div id="message" class="updated fade ctv_admin_notices">
-				%s sản phẩm đã đưa lên Facebook.
+				%s product(s) exported.
 			</div>',
 			$post_count
 		);
