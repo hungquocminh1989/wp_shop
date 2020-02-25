@@ -121,7 +121,7 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 	$refix_date = Date('YmdHis');
 	$excel_path = WP_CONTENT_DIR . "/download/Export_$refix_date.xlsx";
 	$writer->save($excel_path);
-	//wp_redirect(content_url() . "/download/Export_$refix_date.xlsx");
+	wp_redirect(content_url() . "/download/Export_$refix_date.xlsx");
 	$redirect_to = add_query_arg( 
 		[
 			'bulk_reposts' => count( $post_ids ),
@@ -139,7 +139,7 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 function my_bulk_action_admin_notice() {
 	if ( ! empty( $_REQUEST['bulk_reposts'] ) ) {
 		$post_count = intval( $_REQUEST['bulk_reposts'] );
-		$link_download = $_REQUEST['link_download']
+		$link_download = $_REQUEST['link_download'];
 		printf(
 			'<div id="message" class="updated fade ctv_admin_notices">
 				%s product(s) exported. <a href="%s">Download</a>
