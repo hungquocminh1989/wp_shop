@@ -22,8 +22,8 @@ function register_my_bulk_actions( $bulk_actions ) {
 /**
  * Handles the bulk action.
  */
- use PhpOffice\PhpSpreadsheet\Spreadsheet;
-	use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 	if ( $action !== 'export_to_excel') {
 		return $redirect_to;
@@ -54,9 +54,9 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 		$product = wc_get_product($post_id);
 		
 		if($product != NULL){
-			
-			$gia_san_pham = $product->price;
-			$gia_san_pham_ctv = get_post_meta($product->id, 'ctv_price', true );
+			$product_name = trim($product->get_title());
+			$gia_san_pham = number_format($product->price, 0);
+			$gia_san_pham_ctv = number_format(get_post_meta($product->id, 'ctv_price', true ), 0);
 			
 			//Get images
 			$attachment_ids = $product->get_gallery_attachment_ids();
@@ -81,7 +81,7 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 				$fb_thong_tin_lien_ket
 			";
 
-			$arr_products[]	= [$key + 1, '', $main_page_content, $images_str];			
+			$arr_products[]	= [$key + 1, $product_name, $main_page_content, $images_str];			
 			
 		}
 	}
@@ -118,10 +118,17 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 	
 	//Save file
 	$writer = new Xlsx($spreadsheet);
-	$writer->save(WP_CONTENT_DIR . '/download/export.xlsx');
-	//download_url(content_url() . '/download/export.xlsx');
-	
-	$redirect_to = add_query_arg( 'bulk_reposts', count( $post_ids ), $redirect_to );
+	$refix_date = Date('YmdHis');
+	$excel_path = WP_CONTENT_DIR . "/download/Export_$refix_date.xlsx";
+	$writer->save($excel_path);
+	wp_redirect(content_url() . "/download/Export_$refix_date.xlsx");
+	$redirect_to = add_query_arg( 
+		[
+			'bulk_reposts' => count( $post_ids ),
+			'link_download' => content_url() . "/download/Export_$refix_date.xlsx",
+		]
+		, $redirect_to 
+	);
 	
 	return $redirect_to;
 }
@@ -132,12 +139,12 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 function my_bulk_action_admin_notice() {
 	if ( ! empty( $_REQUEST['bulk_reposts'] ) ) {
 		$post_count = intval( $_REQUEST['bulk_reposts'] );
-
+		$link_download = $_REQUEST['link_download']
 		printf(
 			'<div id="message" class="updated fade ctv_admin_notices">
 				%s product(s) exported. <a href="%s">Download</a>
 			</div>',
-			$post_count, content_url() . '/download/export.xlsx'
+			$post_count, $link_download
 		);
 	}
 }
