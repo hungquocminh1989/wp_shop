@@ -41,17 +41,11 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 	if ( $the_query->have_posts() ) {
 	    while ( $the_query->have_posts() ) {
 	    	$the_query->the_post();
-			
 			$arr_token = explode("\r\n", get_field('fb_access_token_truy_cap_page'));
-			
 			foreach( $arr_token as $k => $token_page ) {
-				
 				$arr_pages[] = [$k + 1, $token_page];
-				
 			}
-			
 		}
-		
 	}
 	wp_reset_postdata();
 	
@@ -73,11 +67,11 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 			
 			$images_str = implode("\r\n", $attachments);
 			
-			$fb_tieu_de = get_field('fb_page_tieu_de', $product->id);
-			$fb_noi_dung_san_pham = get_field('fb_page_noi_dung_san_pham', $product->id);
-			$fb_thong_tin_bao_hanh = get_field('fb_page_thong_tin_bao_hanh', $product->id);
-			$fb_thong_tin_lien_he = get_field('fb_page_thong_tin_lien_he', $product->id);
-			$fb_thong_tin_lien_ket = get_field('fb_page_thong_tin_lien_ket', $product->id);
+			$fb_tieu_de = trim(get_field('fb_page_tieu_de', $product->id));
+			$fb_noi_dung_san_pham = trim(get_field('fb_page_noi_dung_san_pham', $product->id));
+			$fb_thong_tin_bao_hanh = trim(get_field('fb_page_thong_tin_bao_hanh', $product->id));
+			$fb_thong_tin_lien_he = trim(get_field('fb_page_thong_tin_lien_he', $product->id));
+			$fb_thong_tin_lien_ket = trim(get_field('fb_page_thong_tin_lien_ket', $product->id));
 			$main_page_content = "
 				$fb_tieu_de
 				$fb_noi_dung_san_pham
@@ -125,7 +119,8 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 	//Save file
 	$writer = new Xlsx($spreadsheet);
 	$writer->save(WP_CONTENT_DIR . '/download/export.xlsx');
-	download_url(content_url() . '/download/export.xlsx');
+	//download_url(content_url() . '/download/export.xlsx');
+	
 	$redirect_to = add_query_arg( 'bulk_reposts', count( $post_ids ), $redirect_to );
 	
 	return $redirect_to;
@@ -140,9 +135,9 @@ function my_bulk_action_admin_notice() {
 
 		printf(
 			'<div id="message" class="updated fade ctv_admin_notices">
-				%s product(s) exported.
+				%s product(s) exported. <a href="%s">Download</a>
 			</div>',
-			$post_count
+			$post_count, content_url() . '/download/export.xlsx'
 		);
 	}
 }
