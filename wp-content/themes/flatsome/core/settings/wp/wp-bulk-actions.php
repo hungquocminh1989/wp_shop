@@ -41,7 +41,7 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 	if ( $the_query->have_posts() ) {
 	    while ( $the_query->have_posts() ) {
 	    	$the_query->the_post();
-			$arr_token = explode("\r\n", get_field('fb_access_token_truy_cap_page'));
+			$arr_token = explode("\r\n", trim(get_field('fb_access_token_truy_cap_page')));
 			foreach( $arr_token as $k => $token_page ) {
 				$arr_pages[] = [$k + 1, $token_page];
 			}
