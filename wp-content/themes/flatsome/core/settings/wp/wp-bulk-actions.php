@@ -118,14 +118,14 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 	
 	//Save file
 	$writer = new Xlsx($spreadsheet);
-	$refix_date = Date('YmdHis');
-	$excel_path = WP_CONTENT_DIR . "/download/Export_$refix_date.xlsx";
+	$refix_date = Date('YmdHis').'.xlsx';
+	$excel_path = WP_CONTENT_DIR . "/download/Export_" . $refix_date;
 	$writer->save($excel_path);
-	wp_redirect(content_url() . "/download/Export_$refix_date.xlsx");
+	wp_redirect(content_url() . "/download/Export_" . $refix_date);
 	$redirect_to = add_query_arg( 
 		[
 			'bulk_reposts' => count( $post_ids ),
-			'link_download' => content_url() . "/download/Export_$refix_date.xlsx",
+			'link_download' => content_url() . "/download/Export_" . $refix_date,
 		]
 		, $redirect_to 
 	);
