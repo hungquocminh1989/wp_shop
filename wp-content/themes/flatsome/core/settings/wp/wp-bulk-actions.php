@@ -56,11 +56,16 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 		if($product != NULL){
 			$product_name = trim($product->get_title());
 			$gia_san_pham = number_format($product->price, 0);
-			$gia_san_pham_ctv = number_format(get_post_meta($product->id, 'ctv_price', true ), 0);
+			//$gia_san_pham_ctv = number_format(get_post_meta($product->id, 'ctv_price', true ), 0);
+			
+			$variations = $product->get_available_variations();//get_variation_attributes()
+			
+			//echo '<pre>';
+			//print_r($variations);die();
 			
 			//Get images
 			$attachment_ids = $product->get_gallery_attachment_ids();
-			
+			$attachments = [];
 			foreach( $attachment_ids as $attachment_id ) {
 				$attachments[] = wp_get_attachment_image_src( $attachment_id, 'full' )[0];
 			}
@@ -74,6 +79,7 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 			$fb_thong_tin_lien_ket = trim(get_field('fb_page_thong_tin_lien_ket', $product->id));
 			$main_page_content = "
 				$fb_tieu_de
+				$product_name
 				$fb_noi_dung_san_pham
 				$fb_thong_tin_bao_hanh
 				Giá bán : $gia_san_pham
@@ -118,11 +124,20 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 	
 	//Save file
 	$writer = new Xlsx($spreadsheet);
-	$refix_date = Date('YmdHis');
-	$excel_path = WP_CONTENT_DIR . "/download/Export_$refix_date.xlsx";
-	$writer->save($excel_path);
-	wp_redirect(content_url() . "/download/Export_$refix_date.xlsx");
-	$redirect_to = add_query_arg( 
+	$export_filename = 'Export_' . Date('YmdHis') . '.xlsx';
+	//$excel_path = WP_CONTENT_DIR . "/download/$export_filename";
+	//$writer->save($excel_path);
+	
+	// redirect output to client browser
+	header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+	header('Content-Disposition: attachment;filename="' . $export_filename . '"');
+	header('Cache-Control: max-age=0');
+	$writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
+	$writer->save('php://output');
+	
+	return;//Return download file
+	
+	/*$redirect_to = add_query_arg( 
 		[
 			'bulk_reposts' => count( $post_ids ),
 			'link_download' => content_url() . "/download/Export_$refix_date.xlsx",
@@ -130,7 +145,7 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 		, $redirect_to 
 	);
 	
-	return $redirect_to;
+	return $redirect_to;*/
 }
 
 /**
