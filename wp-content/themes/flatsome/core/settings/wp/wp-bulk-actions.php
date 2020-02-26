@@ -63,6 +63,7 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 	foreach ( $post_ids as $key => $post_id ) {
 		//Get data product
 		$product = wc_get_product($post_id);
+		$product_url = get_permalink( $post_id ) ;
 		
 		if($product != NULL){
 			$product_name = trim($product->get_title());
@@ -96,6 +97,8 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 				Giá bán : $gia_san_pham
 				$fb_thong_tin_lien_he
 				$fb_thong_tin_lien_ket
+				
+				Truy cập tại website : $product_url
 			";
 
 			$arr_products[]	= [$key + 1, $product_name, $main_page_content, $images_str];			
