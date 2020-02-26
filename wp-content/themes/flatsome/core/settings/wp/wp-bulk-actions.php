@@ -20,6 +20,17 @@ function register_my_bulk_actions( $bulk_actions ) {
 }
 
 /**
+* Remove empty new line
+*/
+function _remove_empty_new_line($str){
+	$arr = explode("\r\n", $str);
+	$arr_filter = array_filter($arr);
+	$output = implode("\r\n", $arr_filter);
+	
+	return $output;
+}
+
+/**
  * Handles the bulk action.
  */
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -41,7 +52,7 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 	if ( $the_query->have_posts() ) {
 	    while ( $the_query->have_posts() ) {
 	    	$the_query->the_post();
-			$arr_token = explode("\r\n", trim(get_field('fb_access_token_truy_cap_page')));
+			$arr_token = explode("\r\n", _remove_empty_new_line(trim(get_field('fb_access_token_truy_cap_page'))));
 			foreach( $arr_token as $k => $token_page ) {
 				$arr_pages[] = [$k + 1, $token_page];
 			}
@@ -72,11 +83,11 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 			
 			$images_str = implode("\r\n", $attachments);
 			
-			$fb_tieu_de = trim(get_field('fb_page_tieu_de', $product->id));
-			$fb_noi_dung_san_pham = trim(get_field('fb_page_noi_dung_san_pham', $product->id));
-			$fb_thong_tin_bao_hanh = trim(get_field('fb_page_thong_tin_bao_hanh', $product->id));
-			$fb_thong_tin_lien_he = trim(get_field('fb_page_thong_tin_lien_he', $product->id));
-			$fb_thong_tin_lien_ket = trim(get_field('fb_page_thong_tin_lien_ket', $product->id));
+			$fb_tieu_de = _remove_empty_new_line(trim(get_field('fb_page_tieu_de', $product->id)));
+			$fb_noi_dung_san_pham = _remove_empty_new_line(trim(get_field('fb_page_noi_dung_san_pham', $product->id)));
+			$fb_thong_tin_bao_hanh = _remove_empty_new_line(trim(get_field('fb_page_thong_tin_bao_hanh', $product->id)));
+			$fb_thong_tin_lien_he = _remove_empty_new_line(trim(get_field('fb_page_thong_tin_lien_he', $product->id)));
+			$fb_thong_tin_lien_ket = _remove_empty_new_line(trim(get_field('fb_page_thong_tin_lien_ket', $product->id)));
 			$main_page_content = "
 				$fb_tieu_de
 				$product_name
