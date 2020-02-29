@@ -154,7 +154,7 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 	
 	$command = "python3.8 $python_path $excel_path > abc.log";
 	echo $command;
-	$output = shell_exec($command);
+	$output = exec($command);
 	echo $output;
 	
 	return;//Return download file
