@@ -150,11 +150,12 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 	$writer->save('php://output');*/
 	
 	//$excel_path = WP_CONTENT_DIR . "/download/Export_20200229053355.xlsx";
-	$python_path = WP_CONTENT_DIR . "/CreatePostToPages.py";
+	$python_path = "/root/CreatePostToPages.py";
 	
-	$command = "sudo python3.8 $python_path $excel_path > abc.log";
+	$command = "python3.8 $python_path $excel_path > abc.log";
 	echo $command;
-	$output = exec($command);
+	$output = shell_exec($command);
+	echo '<br>Output';
 	echo $output;
 	
 	return;//Return download file
