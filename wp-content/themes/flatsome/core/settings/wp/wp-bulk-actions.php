@@ -139,15 +139,23 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 	//Save file
 	$writer = new Xlsx($spreadsheet);
 	$export_filename = 'Export_' . Date('YmdHis') . '.xlsx';
-	//$excel_path = WP_CONTENT_DIR . "/download/$export_filename";
-	//$writer->save($excel_path);
+	$excel_path = WP_CONTENT_DIR . "/download/$export_filename";
+	$writer->save($excel_path);
 	
 	// redirect output to client browser
-	header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+	/*header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 	header('Content-Disposition: attachment;filename="' . $export_filename . '"');
 	header('Cache-Control: max-age=0');
 	$writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
-	$writer->save('php://output');
+	$writer->save('php://output');*/
+	
+	$excel_path = WP_CONTENT_DIR . "/download/Export_20200229053355.xlsx";
+	$python_path = WP_CONTENT_DIR . "/CreatePostToPages.py";
+	
+	$command = "python $python_path $excel_path";
+	echo $command;
+	$output = shell_exec($command);
+	echo $output;
 	
 	return;//Return download file
 	
