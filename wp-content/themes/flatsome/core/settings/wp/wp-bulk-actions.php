@@ -152,7 +152,7 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 	//$excel_path = WP_CONTENT_DIR . "/download/Export_20200229053355.xlsx";
 	$python_path = WP_CONTENT_DIR . "/CreatePostToPages.py";
 	
-	$command = "python $python_path $excel_path";
+	$command = "python3.8 $python_path $excel_path";
 	echo $command;
 	$output = shell_exec($command);
 	echo $output;
