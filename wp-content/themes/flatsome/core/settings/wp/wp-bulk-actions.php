@@ -138,8 +138,11 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 	
 	//Save file
 	$writer = new Xlsx($spreadsheet);
-	$export_filename = 'Export_' . Date('YmdHis') . '.xlsx';
+	$ymdhis = Date('YmdHis');
+	$export_filename = 'Export_' . $ymdhis . '.xlsx';
+	$log_filename = 'Export_' . $ymdhis . '.log';
 	$excel_path = WP_CONTENT_DIR . "/download/$export_filename";
+	$log_path = WP_CONTENT_DIR . "/download/$log_filename";
 	$writer->save($excel_path);
 	
 	// redirect output to client browser
@@ -150,25 +153,23 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 	$writer->save('php://output');*/
 	
 	//$excel_path = WP_CONTENT_DIR . "/download/Export_20200229053355.xlsx";
-	$python_path = "/root/CreatePostToPages.py";
 	
-	$command = "python3.8 $python_path $excel_path > abc.log";
-	echo $command;
-	$output = shell_exec($command);
-	echo '<br>Output';
-	echo $output;
+	//Execute shell script upload to facebook
+	$command = "sh /root/run_python.sh $excel_path $log_path";
+	$output = exec($command);
 	
-	return;//Return download file
+	//return;//Return download file
 	
-	/*$redirect_to = add_query_arg( 
+	$redirect_to = add_query_arg( 
 		[
 			'bulk_reposts' => count( $post_ids ),
-			'link_download' => content_url() . "/download/Export_$refix_date.xlsx",
+			'link_download' => content_url() . "/download/$export_filename",
+			'link_log_download' => content_url() . "/download/$log_filename",
 		]
 		, $redirect_to 
 	);
 	
-	return $redirect_to;*/
+	return $redirect_to;
 }
 
 /**
@@ -178,11 +179,12 @@ function my_bulk_action_admin_notice() {
 	if ( ! empty( $_REQUEST['bulk_reposts'] ) ) {
 		$post_count = intval( $_REQUEST['bulk_reposts'] );
 		$link_download = $_REQUEST['link_download'];
+		$link_log_download = $_REQUEST['link__log_download'];
 		printf(
 			'<div id="message" class="updated fade ctv_admin_notices">
-				%s product(s) exported. <a href="%s">Download</a>
+				%s product(s) exported. <a href="%s">Download excel</a> - <a href="%s">Download log</a>
 			</div>',
-			$post_count, $link_download
+			$post_count, $link_download, $link_log_download
 		);
 	}
 }
