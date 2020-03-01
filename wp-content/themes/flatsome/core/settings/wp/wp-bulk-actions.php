@@ -182,7 +182,7 @@ function my_bulk_action_admin_notice() {
 	if ( ! empty( $_REQUEST['bulk_reposts'] ) ) {
 		$post_count = intval( $_REQUEST['bulk_reposts'] );
 		$link_download = $_REQUEST['link_download'];
-		$link_log_download = $_REQUEST['link__log_download'];
+		$link_log_download = $_REQUEST['link_log_download'];
 		printf(
 			'<div id="message" class="updated fade ctv_admin_notices">
 				%s product(s) exported. <a href="%s">Download excel</a> - <a href="%s">Download log</a>
