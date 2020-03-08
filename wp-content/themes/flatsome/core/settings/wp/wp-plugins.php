@@ -30,7 +30,7 @@ add_action( 'after_setup_theme',  function(){
 	repoLoadPluginFromZip('filebird', 'filebird.php');
 	repoLoadPluginFromZip('woo-variation-swatches', 'woo-variation-swatches.php');
 	repoLoadPluginFromZip('woo-variation-swatches-pro', 'woo-variation-swatches-pro.php');
-	repoLoadPluginFromZip('pagination-styler-for-woocommerce', 'main.php');
+	repoLoadPluginFromZip('pagination-styler-for-woocommerce', 'pagination-styler.php');
 	//repoLoadPluginFromStore();
 	
 });
