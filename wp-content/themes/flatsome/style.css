@@ -15,3 +15,9 @@ License URI: http://themeforest.net/licenses
 All custom CSS should be added to Secret > Advanced > Custom CSS,
 or in the style.css of a Child Theme.
 ***************/
+.woocommerce-pagination.berocket_pagination ul li a.next {
+    display: inline !important;
+}
+.woocommerce-pagination.berocket_pagination ul li a.prev {
+    display: inline !important;
+}
