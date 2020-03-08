@@ -15,9 +15,67 @@ License URI: http://themeforest.net/licenses
 All custom CSS should be added to Secret > Advanced > Custom CSS,
 or in the style.css of a Child Theme.
 ***************/
+
+
+/* For plugin pagination-styler-for-woocommerce */
 .woocommerce-pagination.berocket_pagination ul li a.next {
     display: inline !important;
 }
 .woocommerce-pagination.berocket_pagination ul li a.prev {
     display: inline !important;
+}
+
+/* For all screen */
+html,body,p,h1,h2,h3,h4,h5,h6,em,strong,span,a  {
+	font-family: Helvetica,Arial,sans-serif !important;
+}
+
+.header-contact-wrapper>ul>li>a:hover,
+.header-social-icons .social-icons>a:hover
+{
+	color: #ff862a;
+}
+
+.header-contact-wrapper>ul>li>a,
+.header-social-icons .social-icons>a
+{
+	color: #000000;
+}
+
+.cart-item .header-button .is-outline:not(:hover)
+{
+	color: #000000;
+}
+
+.product-small .box:hover
+{
+	border : solid 2px #ff862a !important;
+} 
+
+.quick_buy_container
+{
+	display:grid;
+}
+
+.filter--style-premmerce .filter__item
+{
+	border: 1px solid #62bb46;
+	margin-top: -1px;
+}
+
+/*.fb_dialog
+{
+	margin-right: 50px;
+}*/
+
+.back-to-top{
+	bottom: 100px;
+	right: 35px;
+}
+
+/* Custom CSS Mobile */
+@media (max-width: 549px){
+	.category-filtering{
+		border: 1px solid #62bb46;
+	}
 }
