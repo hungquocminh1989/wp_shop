@@ -33,7 +33,7 @@ html,body,p,h1,h2,h3,h4,h5,h6,em,strong,span,a  {
 .header-contact-wrapper>ul>li>a:hover,
 .header-social-icons .social-icons>a:hover
 {
-	color: #ff862a;
+	color: #393939;
 }
 
 .header-contact-wrapper>ul>li>a,
@@ -49,7 +49,7 @@ html,body,p,h1,h2,h3,h4,h5,h6,em,strong,span,a  {
 
 .product-small .box:hover
 {
-	border : solid 2px #ff862a !important;
+	border : solid 2px #393939 !important;
 } 
 
 .quick_buy_container
@@ -59,7 +59,7 @@ html,body,p,h1,h2,h3,h4,h5,h6,em,strong,span,a  {
 
 .filter--style-premmerce .filter__item
 {
-	border: 1px solid #62bb46;
+	border: 1px solid #f2545b;
 	margin-top: -1px;
 }
 
@@ -76,6 +76,6 @@ html,body,p,h1,h2,h3,h4,h5,h6,em,strong,span,a  {
 /* Custom CSS Mobile */
 @media (max-width: 549px){
 	.category-filtering{
-		border: 1px solid #62bb46;
+		border: 1px solid #f2545b;
 	}
 }
