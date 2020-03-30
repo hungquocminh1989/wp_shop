@@ -59,7 +59,7 @@ html,body,p,h1,h2,h3,h4,h5,h6,em,strong,span,a  {
 
 .filter--style-premmerce .filter__item
 {
-	border: 1px solid #f2545b;
+	border: 1px solid #393939;
 	margin-top: -1px;
 }
 
@@ -76,6 +76,6 @@ html,body,p,h1,h2,h3,h4,h5,h6,em,strong,span,a  {
 /* Custom CSS Mobile */
 @media (max-width: 549px){
 	.category-filtering{
-		border: 1px solid #f2545b;
+		border: 1px solid #393939;
 	}
 }
