@@ -73,6 +73,17 @@ html,body,p,h1,h2,h3,h4,h5,h6,em,strong,span,a  {
 	right: 35px;
 }
 
+span.amount {
+	color: red;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.tab-panels{
+	border-top: 2px solid #ff6700;
+    margin-top: 1px;
+}
+
 /* Custom CSS Mobile */
 @media (max-width: 549px){
 	.category-filtering{
