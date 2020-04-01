@@ -80,7 +80,7 @@ span.amount {
 }
 
 .tab-panels{
-	border-top: 2px solid #ff6700;
+	border-top: 2px solid #ff6700 !important;
     margin-top: 1px;
 }
 
