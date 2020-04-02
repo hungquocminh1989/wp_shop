@@ -51,7 +51,7 @@ function repoDebugVar($object){
 */
 add_filter( 'woocommerce_currencies', 'add_my_currency' );
 function add_my_currency( $currencies ) {
-	$currencies['vnd'] = __( 'VNĐ', 'woocommerce' );
+	$currencies['vnd'] = __( 'Việt Nam Đồng Full', 'woocommerce' );
 	return $currencies;
 }
 
