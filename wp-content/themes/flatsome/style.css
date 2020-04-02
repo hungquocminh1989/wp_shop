@@ -74,14 +74,14 @@ html,body,p,h1,h2,h3,h4,h5,h6,em,strong,span,a  {
 }
 
 span.amount {
-	color: red;
-    font-size: 18px;
-    font-weight: 700;
+	color: red !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
 }
 
 .tab-panels{
 	border-top: 2px solid #ff6700 !important;
-    margin-top: 1px;
+    margin-top: 1px !important;
 }
 
 /* Custom CSS Mobile */
