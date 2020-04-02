@@ -43,3 +43,14 @@ function repoDebugVar($object){
 	echo "<pre>";
 	var_dump($object);
 }
+
+/*
+|--------------------------------------------------------------------------
+| CHANGE MY CURRENCY
+|-------------------------------------------------------------------------- 
+*/
+add_filter( 'woocommerce_currencies', 'add_my_currency' ); 
+function add_my_currency( $currencies ) {
+     $currencies['vnd'] = __( ' VNĐ', 'woocommerce' );
+     return $currencies;
+}
