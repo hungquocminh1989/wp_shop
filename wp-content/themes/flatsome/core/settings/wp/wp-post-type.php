@@ -45,7 +45,7 @@ function repoCreatePostType() {
         'label' => 'Quản Lý Khách Hàng',
         'public' => true,
         'has_archive' => true,
-        'menu_position' => 5,
+        'menu_position' => 6,
         'supports' => 
             [
                 'title',

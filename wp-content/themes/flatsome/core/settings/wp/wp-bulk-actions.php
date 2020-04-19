@@ -154,7 +154,7 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 	
 	//$excel_path = WP_CONTENT_DIR . "/download/Export_20200229053355.xlsx";
 	
-	$path_shell = get_template_directory() . "/linux_shell_script/run_python.sh";
+	$path_shell = RUN_PYTHON_SHELL_SCRITP;
 	$path_python = get_template_directory() . "/linux_shell_script/CreatePostToPages.py";
 	
 	//Execute shell script upload to facebook

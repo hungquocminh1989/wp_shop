@@ -2,6 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 add_action( 'acf/render_field/name=fb_access_token', 'repo_button_get_token', 10, 1 );
+add_action( 'acf/render_field/name=fb_access_token_truy_cap_page_source', 'repo_button_get_products', 10, 1 );
 add_action('acf/input/admin_head', 'repo_acf_admin_head');
 add_action('acf/input/admin_footer', 'repo_acf_admin_footer');
 add_action('acf/input/admin_enqueue_scripts', 'repo_acf_admin_enqueue_scripts');

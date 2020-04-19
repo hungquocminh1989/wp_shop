@@ -2,6 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 define('TEMPLATE_URL', get_template_directory_uri());
+define('RUN_PYTHON_SHELL_SCRITP', get_template_directory() . "/linux_shell_script/run_python.sh");
 /**
 * Facebook tool config
 */

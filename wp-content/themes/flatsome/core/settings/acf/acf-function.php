@@ -5,6 +5,10 @@ function repo_button_get_token($field){
 	locate_template('/inc/acf-fields/btn-get-token.php', TRUE);
 }
 
+function repo_button_get_products($field){
+	locate_template('/inc/acf-fields/btn-get-page-product.php', TRUE);
+}
+
 function repo_acf_admin_head(){
 	
 }

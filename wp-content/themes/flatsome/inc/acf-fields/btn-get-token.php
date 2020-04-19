@@ -7,7 +7,7 @@
 	(function($){
 	    $(document).ready(function(){
 	        $('#my-ajax-trigger').click(function(){
-	        	System.message_confirm('Thực xử lý token ?',function(){
+	        	System.message_confirm('Thực hiện xử lý token ?',function(){
 	        		var ajax = new System();
 					ajax.done_func = function(json) {
 						if(json.success == true){

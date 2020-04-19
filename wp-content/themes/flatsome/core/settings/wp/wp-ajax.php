@@ -67,3 +67,34 @@ function repo_action_check_token() {
 		wp_send_json_error();
 	}
 }
+
+/*
+|--------------------------------------------------------------------------
+| AJAX GET PRODUCT FROM PAGE
+|-------------------------------------------------------------------------- 
+*/
+add_action( 'wp_ajax_get_products', 'repo_action_get_products' );//Khai báo khi sử dụng bên Admin
+//add_action( 'wp_ajax_nopriv_get_token', 'repo_action_get_products' );//Khai báo khi sử dụng bên Public
+function repo_action_get_products() {
+	
+	if(isset($_POST['page_source_token']) == TRUE
+		&& $_POST['page_source_token'] != ''
+	){
+		$token = $_POST['page_source_token'];
+		
+		
+		if($token != ''){
+			$path_shell = RUN_PYTHON_SHELL_SCRITP;
+			$path_python = get_template_directory() . "/linux_shell_script/CreatePostToSite.py";
+			
+			//Execute shell script upload to facebook
+			$command = "sh $path_shell $path_python $excel_path $log_path";
+			$output = exec($command);
+			
+			wp_send_json_success("OK");
+		}
+		else{
+			wp_send_json_error("Token error.");
+		}
+	}
+}
