@@ -77,10 +77,10 @@ add_action( 'wp_ajax_get_products', 'repo_action_get_products' );//Khai báo khi
 //add_action( 'wp_ajax_nopriv_get_token', 'repo_action_get_products' );//Khai báo khi sử dụng bên Public
 function repo_action_get_products() {
 	
-	if(isset($_POST['page_source_token']) == TRUE
-		&& $_POST['page_source_token'] != ''
+	if(isset($_POST['token']) == TRUE
+		&& $_POST['token'] != ''
 	){
-		$token = $_POST['page_source_token'];
+		$token = $_POST['token'];
 		
 		
 		if($token != ''){
