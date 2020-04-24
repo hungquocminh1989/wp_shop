@@ -87,8 +87,12 @@ function repo_action_get_products() {
 			$path_shell = RUN_PYTHON_SHELL_SCRITP;
 			$path_python = get_template_directory() . "/linux_shell_script/CreatePostToSite.py";
 			
+			$ymdhis = Date('YmdHis');
+			$log_filename = 'Result_fetch_' . $ymdhis . '.log';
+			$log_path = WP_CONTENT_DIR . "/download/$log_filename";
+			
 			//Execute shell script upload to facebook
-			$command = "sh $path_shell $path_python $excel_path $log_path";
+			$command = "sh $path_shell $path_python $token $log_path";
 			$output = exec($command);
 			
 			wp_send_json_success("OK");
