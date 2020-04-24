@@ -34,6 +34,7 @@ from datetime import datetime
 from urllib.parse import urlencode
 from pandas import *
 from woocommerce import API
+from pyfacebook import Api as fb
 
 class ImportPostTool:
     def __init__(self):
@@ -44,10 +45,11 @@ class ImportPostTool:
             consumer_key="ck_1c3ad135042991666c034cd0574bb4e1d85325b6",
             consumer_secret="cs_217afc1d1781b772f39087b0c983d9f1046fd014",
             wp_api=True,
-            version="wc/v3"
+            version="wc/v3",
+            timeout=999999
         )
         self.number_post_fetch = 5
-        self.product_per_page = 100
+        self.product_per_page = 100 #100 is maximum
 
     def curl(self, method, url, data):
 
