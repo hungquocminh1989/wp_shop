@@ -34,7 +34,6 @@ from datetime import datetime
 from urllib.parse import urlencode
 from pandas import *
 from woocommerce import API
-from pyfacebook import Api as fb
 
 class ImportPostTool:
     def __init__(self):
