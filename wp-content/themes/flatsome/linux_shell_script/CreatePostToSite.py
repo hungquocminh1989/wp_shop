@@ -47,7 +47,7 @@ class ImportPostTool:
             version="wc/v3",
             timeout=999999
         )
-        self.number_post_fetch = 5
+        self.number_post_fetch = 20
         self.product_per_page = 100 #100 is maximum
         self.category_men_suggest_arr = ['đồng hồ nam', 'dong ho nam', 'nam']
         self.category_women_suggest_arr = ['đồng hồ nữ', 'dong ho nu', 'nữ', 'nu']
