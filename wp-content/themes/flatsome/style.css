@@ -84,6 +84,12 @@ span.amount {
     margin-top: 1px !important;
 }
 
+.product-summary .woocommerce-Price-currencySymbol{
+		font-size:inherit !important;
+		vertical-align:inherit !important;
+		display:inherit !important;
+}
+
 /* Custom CSS Mobile */
 @media (max-width: 549px){
 	.category-filtering{
