@@ -25,7 +25,7 @@ acf_add_local_field_group(array(
 				'class' => '',
 				'id' => '',
 			),
-			'default_value' => '[ Hàng Quốc Tế Cao Cấp Xách Tay ]',
+			'default_value' => '[ Hàng like authentic cao cấp ]',
 			'placeholder' => '',
 			'maxlength' => '',
 			'rows' => 2,
@@ -63,9 +63,9 @@ acf_add_local_field_group(array(
 				'class' => '',
 				'id' => '',
 			),
-			'default_value' => '✔️ Bảo hành 1 năm.
-✔️ 1 đổi 1 nếu không giống mẫu.
-✔️ Hàng săn sale mới 100% bao giá thị trường.',
+			'default_value' => '✔️ Hỗ trợ bảo hành dài hạn (1 năm).
+✔️ Chất liệu cao cấp.
+✔️ Hàng săn sale mới 100%.',
 			'placeholder' => '',
 			'maxlength' => '',
 			'rows' => 4,
@@ -84,7 +84,12 @@ acf_add_local_field_group(array(
 				'class' => '',
 				'id' => '',
 			),
-			'default_value' => '✔️ Liên hệ 0902676026 hoặc inbox để xem hàng trực tiếp.',
+			'default_value' => '_____________________________
+Koolwatch
+🇻🇳Đồng hồ thời trang like authentic chất lượng, bảo hành dài hạn
+📞Hotline: 0902660153
+👉Website: https://koolwatch.me/
+📩Email: support@koolwatch.me',
 			'placeholder' => '',
 			'maxlength' => '',
 			'rows' => 2,
@@ -103,8 +108,8 @@ acf_add_local_field_group(array(
 				'class' => '',
 				'id' => '',
 			),
-			'default_value' => '#DongHoNamNu #HangSanSale #DongHoChinhHang #HangXachTay #GiaSock
-#ThiTruongGiaReVN #ShopDongHoNamNu #HopTacKinhDoanh #HangNuocNgoai #DongHoThoiTrang',
+			'default_value' => '#DongHoNamNu #LikeAuthentic
+#koolwatch.me',
 			'placeholder' => '',
 			'maxlength' => '',
 			'rows' => 4,

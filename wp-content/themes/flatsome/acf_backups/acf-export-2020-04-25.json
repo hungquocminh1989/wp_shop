@@ -1,0 +1,263 @@
+[
+    {
+        "key": "group_5d32f3163f9ed",
+        "title": "Nội Dung Facebook Page",
+        "fields": [
+            {
+                "key": "field_5d32f72b9dded",
+                "label": "Tiêu Đề",
+                "name": "fb_page_tieu_de",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "[ Hàng like authentic cao cấp ]",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 2,
+                "new_lines": ""
+            },
+            {
+                "key": "field_5d32f341a062d",
+                "label": "Nội Dung Sản Phẩm",
+                "name": "fb_page_noi_dung_san_pham",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": "",
+                "new_lines": ""
+            },
+            {
+                "key": "field_5d32f7bf9ddef",
+                "label": "Thông Tin Bảo Hành",
+                "name": "fb_page_thong_tin_bao_hanh",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "✔️ Hỗ trợ bảo hành dài hạn (1 năm).\r\n✔️ Chất liệu cao cấp.\r\n✔️ Hàng săn sale mới 100%.",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 4,
+                "new_lines": ""
+            },
+            {
+                "key": "field_5d32f42a9a4b0",
+                "label": "Thông Tin Liên Hệ",
+                "name": "fb_page_thong_tin_lien_he",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "_____________________________\r\nKoolwatch\r\n🇻🇳Đồng hồ thời trang like authentic chất lượng, bảo hành dài hạn\r\n📞Hotline: 0902660153\r\n👉Website: https:\/\/koolwatch.me\/\r\n📩Email: support@koolwatch.me",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 2,
+                "new_lines": ""
+            },
+            {
+                "key": "field_5d32f7b99ddee",
+                "label": "Thông Tin Liên Kết",
+                "name": "fb_page_thong_tin_lien_ket",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "#DongHoNamNu #LikeAuthentic\r\n#koolwatch.me",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 4,
+                "new_lines": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "product"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": ""
+    },
+    {
+        "key": "group_5d3340b624b72",
+        "title": "Tài Khoản Facebook",
+        "fields": [
+            {
+                "key": "field_5d3340cef3dab",
+                "label": "Tên Đăng Nhập",
+                "name": "fb_ten_dang_nhap",
+                "type": "text",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5d334124f3dac",
+                "label": "Mật Khẩu",
+                "name": "fb_mat_khau",
+                "type": "password",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_5d3343300d412",
+                "label": "Access Token",
+                "name": "fb_access_token",
+                "type": "textarea",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 3,
+                "new_lines": ""
+            },
+            {
+                "key": "field_5d3c870ee8bed",
+                "label": "Access Token Truy Cập Page Post",
+                "name": "fb_access_token_truy_cap_page",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 3,
+                "new_lines": ""
+            },
+            {
+                "key": "field_5e9bd68b79305",
+                "label": "Access Token Truy Cập Page Nguồn",
+                "name": "fb_access_token_truy_cap_page_source",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "maxlength": "",
+                "rows": 3,
+                "new_lines": ""
+            },
+            {
+                "key": "field_5d334181f3dad",
+                "label": "Trạng Thái",
+                "name": "fb_trang_thai",
+                "type": "select",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": [
+                    "Hoạt Động",
+                    "Tạm Dừng"
+                ],
+                "default_value": [
+                    0
+                ],
+                "allow_null": 0,
+                "multiple": 0,
+                "ui": 0,
+                "return_format": "value",
+                "ajax": 0,
+                "placeholder": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "token"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "left",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": ""
+    }
+]
