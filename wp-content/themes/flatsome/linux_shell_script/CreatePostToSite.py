@@ -29,7 +29,7 @@
 """
 
 #Import packages
-import sys, os, json, requests, pycurl, certifi, xlrd
+import sys, os, json, requests, pycurl, certifi, xlrd, re
 from datetime import datetime
 from urllib.parse import urlencode
 from pandas import *
@@ -49,6 +49,11 @@ class ImportPostTool:
         )
         self.number_post_fetch = 5
         self.product_per_page = 100 #100 is maximum
+        self.category_men_suggest_arr = ['đồng hồ nam', 'dong ho nam', 'nam']
+        self.category_women_suggest_arr = ['đồng hồ nữ', 'dong ho nu', 'nữ', 'nu']
+        self.category_men_name = 'Đồng Hồ Nam' #Danh mục đồng hồ nam
+        self.category_women_name = 'Đông Hồ Nữ' #Danh mục đồng hồ nữ
+        self.categogry_uncategorized = 'Uncategorized' #Danh mục không xác định
 
     def curl(self, method, url, data):
 
@@ -137,9 +142,55 @@ class ImportPostTool:
                 
         return False
 
+    def detect_category_name(self, post_content):
+        
+        post_string = str.lower(post_content)
+
+        #Check đồng hồ nam
+        for item_str in self.category_men_suggest_arr:
+            search = re.search(str.lower(item_str), post_string)
+            if search != None:
+                return self.category_men_name
+
+        #Check đồng hồ nữ
+        for item_str in self.category_women_suggest_arr:
+            search = re.search(str.lower(item_str), post_string)
+            if search != None:
+                return self.category_women_name
+
+        return self.categogry_uncategorized
+
+    def create_wc_category(self, category_name):
+
+        data_search = {
+            "page": 1,
+            "per_page": 100,
+            "search": category_name,
+        }
+    
+        result_ctg = self.wcapi.get("products/categories", params = data_search).json()
+
+        if len(result_ctg) > 0:
+            
+            return result_ctg[0]['id']
+        
+        else:
+
+            data = {
+                "name": category_name,
+            }
+
+            result = self.wcapi.post("products/categories", data).json()
+            
+            return result['id']
+
     def create_wc_post(self, item_post):
 
         images = self.export_data_images(item_post)
+
+        category_name = self.detect_category_name(item_post['message'])
+
+        category_id = self.create_wc_category(category_name)
         
         data = {
             "name": "Auto product {0}".format(datetime.now().strftime('%Y%m%d%H%M%S%f')),
@@ -153,6 +204,11 @@ class ImportPostTool:
                 }
             ],
             "images": images,
+            "categories": [
+                {
+                    "id": category_id,
+                }
+            ],
         }
         self.wcapi.post("products", data)
 
