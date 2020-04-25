@@ -196,7 +196,7 @@ class ImportPostTool:
             "name": "Auto product {0}".format(datetime.now().strftime('%Y%m%d%H%M%S%f')),
             "type": "simple",
             "status": "draft",
-            "description": item_post['message'],
+            "description": item_post['message'] + "\r\n" + "No. : " + item_post['id'],
             "meta_data": [
                 {
                   "key": '_fb_page_post_id',
