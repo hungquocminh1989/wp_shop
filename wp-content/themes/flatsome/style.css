@@ -90,6 +90,10 @@ span.amount {
 		display:inherit !important;
 }
 
+.quick_buy_container{
+	display: inline-block !important;
+}
+
 /* Custom CSS Mobile */
 @media (max-width: 549px){
 	.category-filtering{
