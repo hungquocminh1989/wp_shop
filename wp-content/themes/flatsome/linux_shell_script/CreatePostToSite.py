@@ -40,7 +40,7 @@ class ImportPostTool:
         command_line_arguments = sys.argv
         self.token = command_line_arguments[1] if len(sys.argv) > 1 else ''
         self.wcapi = API(
-            url="https://donghogiarehcm.com",
+            url="https://koolwatch.me",
             consumer_key="ck_1c3ad135042991666c034cd0574bb4e1d85325b6",
             consumer_secret="cs_217afc1d1781b772f39087b0c983d9f1046fd014",
             wp_api=True,
