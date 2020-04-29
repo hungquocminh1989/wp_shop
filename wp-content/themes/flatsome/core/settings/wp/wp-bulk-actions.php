@@ -67,10 +67,10 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 		
 		if($product != NULL){
 			$product_name = trim($product->get_title());
-			$gia_san_pham = number_format($product->price, 0);
+			$gia_san_pham = number_format(($product->price != NULL) ? $product->price : 0, 0);
 			//$gia_san_pham_ctv = number_format(get_post_meta($product->id, 'ctv_price', true ), 0);
 			
-			$variations = $product->get_available_variations();//get_variation_attributes()
+			//$variations = $product->get_available_variations();//get_variation_attributes()
 			
 			//echo '<pre>';
 			//print_r($variations);die();
