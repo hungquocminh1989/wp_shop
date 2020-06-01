@@ -29,7 +29,8 @@
 """
 
 #Import packages
-import sys, os, json, requests, pycurl, certifi, xlrd
+import sys, os, json, requests, pycurl, certifi, xlrd, cloudinary
+import cloudinary.uploader
 from datetime import datetime
 from urllib.parse import urlencode
 from pandas import *
@@ -37,7 +38,26 @@ from pandas import *
 class ImportPostTool:
     def __init__(self):
         command_line_arguments = sys.argv
-        self.import_excel_files = command_line_arguments[1] if len(sys.argv) > 1 else os.path.join(os.getcwd(), 'Export_20200229053355.xlsx')
+        self.import_excel_files = command_line_arguments[1] if len(sys.argv) > 1 else os.path.join(os.getcwd(), 'Export_20200601173030.xlsx')
+        cloudinary.config( 
+            cloud_name = "minty",
+            api_key = "826583412123261", 
+            api_secret = "Sa3_O7wQUNvwnQELh8U313D5IvQ" 
+        )
+
+    def upload_to_cloudinary(self, attachments):
+        cloudinary_images = {}
+        if len(attachments) > 0:
+            for i in range(len(attachments)):
+                result = cloudinary.uploader.upload(attachments[i])
+                cloudinary_images[result['public_id']] = result['secure_url']
+
+        return cloudinary_images
+
+    def remove_image_cloudinary(self, cloudinary_images):
+        if len(cloudinary_images) > 0:
+            for public_id in cloudinary_images:
+                cloudinary.uploader.destroy(public_id)
         
     def read_excel_import(self):
         
@@ -56,7 +76,7 @@ class ImportPostTool:
         media_fbid = {}
 
         if len(attachments) > 0:
-            for i in range(len(attachments)):
+            for i in attachments:
                 r = self.upload_photo_api(photo_url=attachments[i], token=token)
                 if len(r) > 0 and r["id"] != "":
                     media_fbid["attached_media[{0}]".format(i)] = "{'media_fbid':'"+r["id"]+"'}"
@@ -218,9 +238,16 @@ class ImportPostTool:
                     product_images_list = sheet_product['Images'][excel_product_row].split('\n')
 
                     print('Product Name : ' + product_name)
+
+                    #Upload image to cloudinary
+                    cloudinary_images = self.upload_to_cloudinary(product_images_list)
+                    print(cloudinary_images)
+                    
                     #Post
-                    self.create_page_post_api(page_id, product_content, product_images_list, page_token)
-                
+                    self.create_page_post_api(page_id, product_content, cloudinary_images, page_token)
+
+                    #Remvove image at cloudinary
+                    self.remove_image_cloudinary(cloudinary_images)
                 
 
 #Start application
@@ -234,6 +261,11 @@ attachments = [
 ]
 
 tool = ImportPostTool()
+#result = cloudinary.uploader.upload('https://www.donghogiarehcm.com/wp-content/uploads/2019/10/11612642516_75796048-300x300.jpg')
+#print(result)
+#result = cloudinary.uploader.destroy(result['public_id'])
+#print(result)
+#exit()
 #tool.get_token_info(token)
 tool.execute_import()
 #tool.create_page_post_api(page_id, datetime.now().strftime('%Y%m%d%H%M%S%f'), attachments, token)
