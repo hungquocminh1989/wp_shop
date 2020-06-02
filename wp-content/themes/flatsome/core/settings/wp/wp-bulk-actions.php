@@ -68,14 +68,15 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 			'https://api-ssl.bitly.com/v4/bitlinks', 
 			[
 				'body' => 	[
-								'long_url'=>$product_url
+								'long_url'=>$product_url,
 							],
 				'headers' => [
+								'Content-Type' => 'application/json',
 								'Authorization'=>"Bearer 1a2e53f2db298e7a0dc0c71d870aa5783bd7dc74"
 							],
 			]
 		);
-		echo 111;
+		echo "<pre>";
 		var_dump($post_request);
 		die();
 		$bitly_url = '';
