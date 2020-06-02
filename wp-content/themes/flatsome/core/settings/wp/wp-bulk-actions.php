@@ -77,13 +77,13 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 				//'sslverify'   => false,
 			]
 		);
-		// Response body.
-		$responceData = json_decode(wp_remote_retrieve_body( $response ) );
-		echo "<pre>";
-		var_dump($responceData);
-		//var_dump($responceData->);
-		die();
+		
 		$bitly_url = '';
+		if(is_wp_error( $response ) == FALSE){
+			// Response body.
+			$responceData = json_decode(wp_remote_retrieve_body( $response ) );
+			$bitly_url = $responceData->link;
+		}		
 		
 		if($product != NULL){
 			$product_name = trim($product->get_title());
@@ -118,7 +118,7 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 				$fb_thong_tin_lien_he
 				$fb_thong_tin_lien_ket
 				
-				Truy cập tại website : $product_url
+				Truy cập tại website : $bitly_url
 			";
 
 			$arr_products[]	= [$key + 1, $product_name, $main_page_content, $images_str];			
