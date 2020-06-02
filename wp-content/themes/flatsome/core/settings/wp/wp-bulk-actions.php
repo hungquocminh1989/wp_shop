@@ -67,14 +67,14 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 		$post_request = wp_remote_post(
 			'https://api-ssl.bitly.com/v4/bitlinks', 
 			[
-				'body' => 	[
+				'body' => 	json_encode([
 								'long_url'=>$product_url,
-							],
+							]),
 				'headers' => [
 								'Content-Type' => 'application/json',
 								'Authorization' => "Bearer 1a2e53f2db298e7a0dc0c71d870aa5783bd7dc74"
 							],
-				'sslverify'   => false,
+				//'sslverify'   => false,
 			]
 		);
 		echo "<pre>";
