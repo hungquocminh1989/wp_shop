@@ -63,7 +63,7 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 	foreach ( $post_ids as $key => $post_id ) {
 		//Get data product
 		$product = wc_get_product($post_id);
-		$product_url = get_permalink( $post_id ) ;
+		$product_url = 'koolwatch.me';//get_permalink( $post_id ) ;
 		
 		if($product != NULL){
 			$product_name = trim($product->get_title());
