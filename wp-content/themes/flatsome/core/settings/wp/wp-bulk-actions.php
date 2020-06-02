@@ -64,7 +64,7 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 		//Get data product
 		$product = wc_get_product($post_id);
 		$product_url = get_permalink( $post_id ) ;
-		$post_request = wp_remote_post(
+		$response = wp_remote_post(
 			'https://api-ssl.bitly.com/v4/bitlinks', 
 			[
 				'body' => 	json_encode([
@@ -77,8 +77,11 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 				//'sslverify'   => false,
 			]
 		);
+		// Response body.
+		$responceData = json_decode(wp_remote_retrieve_body( $response ) );
 		echo "<pre>";
-		var_dump($post_request);
+		var_dump($responceData);
+		//var_dump($responceData->);
 		die();
 		$bitly_url = '';
 		
