@@ -83,7 +83,8 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 			// Response body.
 			$responceData = json_decode(wp_remote_retrieve_body( $response ) );
 			$bitly_url = $responceData->link;
-		}		
+		}	
+		$bitly_url = 'koolwatch.me';	
 		
 		if($product != NULL){
 			$product_name = trim($product->get_title());
