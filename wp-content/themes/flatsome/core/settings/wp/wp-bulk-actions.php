@@ -68,7 +68,7 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 			'https://api-ssl.bitly.com/v4/bitlinks', 
 			[
 				'body' => 	json_encode([
-								'long_url'=>$product_url,
+								'long_url'=>$product_url . '?uuid=' . wp_generate_uuid4(),
 							]),
 				'headers' => [
 								'Content-Type' => 'application/json',
