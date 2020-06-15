@@ -32,6 +32,7 @@ add_action( 'after_setup_theme',  function(){
 	repoLoadPluginFromZip('woo-variation-swatches-pro', 'woo-variation-swatches-pro.php');
 	repoLoadPluginFromZip('pagination-styler-for-woocommerce', 'pagination-styler.php');
 	repoLoadPluginFromZip('w3-total-cache', 'w3-total-cache.php');
+	repoLoadPluginFromZip('autoptimize', 'autoptimize.php');
 	//repoLoadPluginFromStore();
 	
 });
