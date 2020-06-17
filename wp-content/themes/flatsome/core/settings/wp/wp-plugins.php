@@ -35,6 +35,7 @@ add_action( 'after_setup_theme',  function(){
 	repoLoadPluginFromZip('autoptimize', 'autoptimize.php');
 	repoLoadPluginFromZip('wp-smush-pro', 'wp-smush.php');
 	repoLoadPluginFromZip('product-import-export-for-woo', 'product-import-export-for-woo.php');
+	repoLoadPluginFromZip('acf-options-importexport', 'acf-import-export.php');
 	//repoLoadPluginFromStore();
 	
 });
