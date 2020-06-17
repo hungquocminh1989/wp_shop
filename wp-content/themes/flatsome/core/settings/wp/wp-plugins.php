@@ -34,6 +34,7 @@ add_action( 'after_setup_theme',  function(){
 	repoLoadPluginFromZip('w3-total-cache', 'w3-total-cache.php');
 	repoLoadPluginFromZip('autoptimize', 'autoptimize.php');
 	repoLoadPluginFromZip('wp-smush-pro', 'wp-smush.php');
+	repoLoadPluginFromZip('product-import-export-for-woo', 'product-import-export-for-woo.php');
 	//repoLoadPluginFromStore();
 	
 });
