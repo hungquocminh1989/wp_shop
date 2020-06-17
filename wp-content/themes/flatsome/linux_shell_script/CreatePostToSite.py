@@ -121,13 +121,19 @@ class ImportPostTool:
 
     def get_list_wc_product(self):
         products = []
-        for i in range(10):
 
-            #Get products
-            products_for_page = self.wcapi.get("products", params={"page": i+1, "per_page": self.product_per_page}).json()
+        #Get products
+        iPage = 1
+        products_for_page = self.wcapi.get("products", params={"page": iPage, "per_page": self.product_per_page}).json()
 
+        while len(products_for_page) > 0:
+            
             #Merge product all page
             products = products + products_for_page
+
+            #Get next page
+            iPage += 1
+            products_for_page = self.wcapi.get("products", params={"page": iPage, "per_page": self.product_per_page}).json()
 
         return products
 
