@@ -35,6 +35,10 @@ from urllib.parse import urlencode
 from pandas import *
 from woocommerce import API
 
+#Import lib common
+sys.path.append('lib')
+import common
+
 class ImportPostTool:
     def __init__(self):
         command_line_arguments = sys.argv
@@ -54,45 +58,7 @@ class ImportPostTool:
         self.category_men_name = 'Đồng Hồ Nam' #Danh mục đồng hồ nam
         self.category_women_name = 'Đông Hồ Nữ' #Danh mục đồng hồ nữ
         self.categogry_uncategorized = 'Uncategorized' #Danh mục không xác định
-
-    def curl(self, method, url, data):
-
-        crl = pycurl.Curl()
-
-        crl.setopt(crl.CAINFO, certifi.where())
-
-        #print('Post data : ')
-        #print(data)
-        
-        postfields = urlencode(data)
-        
-        if method == "POST":
-
-            crl.setopt(crl.URL, url)
-
-            crl.setopt(crl.POSTFIELDS, postfields)
-
-        elif method == "DELETE":
-
-            crl.setopt(crl.URL, url)
-
-            crl.setopt(crl.POSTFIELDS, postfields)
-
-            crl.setopt(crl.CUSTOMREQUEST, 'DELETE')
-
-        elif method == "GET":
-            
-            crl.setopt(crl.URL, url + "?" + postfields)
-
-        result = crl.perform_rs()
-
-        crl.close()
-
-        result = json.loads(result)
-        print('Response info : ')
-        print(result)
-        
-        return result
+        self.shared = curllib.Shared()
 
     def get_token_info_api(self, token):
 
@@ -103,7 +69,7 @@ class ImportPostTool:
             'fields' : 'id,name',
         }
 
-        result = self.curl("GET", api_url, data)
+        result = self.shared.curl("GET", api_url, data)
         
         return result
 
@@ -115,19 +81,25 @@ class ImportPostTool:
             'fields' : 'created_time,message,attachments,permalink_url',
             'limit' : limit,
         }
-        result = self.curl("GET", api_url, data)
+        result = self.shared.curl("GET", api_url, data)
 
         return result
 
     def get_list_wc_product(self):
         products = []
-        for i in range(10):
 
-            #Get products
-            products_for_page = self.wcapi.get("products", params={"page": i+1, "per_page": self.product_per_page}).json()
+        #Get products
+        iPage = 1
+        products_for_page = self.wcapi.get("products", params={"page": iPage, "per_page": self.product_per_page}).json()
 
+        while len(products_for_page) > 0:
+            
             #Merge product all page
             products = products + products_for_page
+
+            #Get next page
+            iPage += 1
+            products_for_page = self.wcapi.get("products", params={"page": iPage, "per_page": self.product_per_page}).json()
 
         return products
 

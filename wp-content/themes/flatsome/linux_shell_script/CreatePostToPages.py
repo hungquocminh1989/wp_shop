@@ -35,6 +35,10 @@ from datetime import datetime
 from urllib.parse import urlencode
 from pandas import *
 
+#Import lib common
+sys.path.append('lib')
+import common
+
 class ImportPostTool:
     def __init__(self):
         command_line_arguments = sys.argv
@@ -44,6 +48,7 @@ class ImportPostTool:
             api_key = "826583412123261", 
             api_secret = "Sa3_O7wQUNvwnQELh8U313D5IvQ" 
         )
+        self.shared = common.Shared()
 
     def upload_to_cloudinary(self, attachments):
         cloudinary_images = {}
@@ -83,59 +88,6 @@ class ImportPostTool:
     
         return media_fbid
 
-    def curl_requests(self, method, url, data):
-        
-        field = urlencode(data)
-        
-        headers = {}
-        
-        if method == "POST":
-            
-            return requests.post(url, headers, data).json()
-        
-        elif method == "GET":
-            
-            return requests.get(url + "?" + field, headers).json()
-
-    def curl(self, method, url, data):
-
-        crl = pycurl.Curl()
-
-        crl.setopt(crl.CAINFO, certifi.where())
-
-        #print('Post data : ')
-        #print(data)
-        
-        postfields = urlencode(data)
-        
-        if method == "POST":
-
-            crl.setopt(crl.URL, url)
-
-            crl.setopt(crl.POSTFIELDS, postfields)
-
-        elif method == "DELETE":
-
-            crl.setopt(crl.URL, url)
-
-            crl.setopt(crl.POSTFIELDS, postfields)
-
-            crl.setopt(crl.CUSTOMREQUEST, 'DELETE')
-
-        elif method == "GET":
-            
-            crl.setopt(crl.URL, url + "&" + postfields)
-
-        result = crl.perform_rs()
-
-        crl.close()
-
-        result = json.loads(result)
-        print('Response info : ')
-        print(result)
-        
-        return result
-
     def get_token_info_api(self, token):
 
         api_url = 'https://graph.facebook.com/v2.10/me?fields=id,name'
@@ -144,7 +96,7 @@ class ImportPostTool:
             "access_token" : token,
         }
 
-        result = self.curl("GET", api_url, data)
+        result = self.shared.curl("GET", api_url, data)
         
         return result
 
@@ -153,7 +105,7 @@ class ImportPostTool:
         data = {
             "access_token" : token,
         }
-        result = self.curl("DELETE", api_url, data)
+        result = self.shared.curl("DELETE", api_url, data)
 
         return result
 
@@ -164,7 +116,7 @@ class ImportPostTool:
             'fields' : 'created_time,message,attachments,permalink_url',
             'limit' : limit,
         }
-        result = self.curl("GET", api_url, data)
+        result = self.shared.curl("GET", api_url, data)
 
         return result
         
@@ -178,18 +130,18 @@ class ImportPostTool:
             "access_token" : token,
         }
         
-        media_fbid = self.upload_multi_photo(attachments, token)
+        media_fbid = self.shared.upload_multi_photo(attachments, token)
         
         if len(media_fbid) > 0:
 
             #Merge data
             data = {**data, **media_fbid}
 
-            result = self.curl("POST", api_url, data)
+            result = self.shared.curl("POST", api_url, data)
             
             return result
         else:
-            result = self.curl("POST", api_url, data)
+            result = self.shared.curl("POST", api_url, data)
             
             return result
             
@@ -208,7 +160,7 @@ class ImportPostTool:
         # [url] 
         # [published] = false
         api_url = 'https://graph.facebook.com/v2.10/me/photos'
-        result = self.curl("POST", api_url, data)
+        result = self.shared.curl("POST", api_url, data)
 
         return result
 
