@@ -32,6 +32,10 @@ add_action( 'after_setup_theme',  function(){
 	repoLoadPluginFromZip('woo-variation-swatches-pro', 'woo-variation-swatches-pro.php');
 	repoLoadPluginFromZip('pagination-styler-for-woocommerce', 'pagination-styler.php');
 	repoLoadPluginFromZip('w3-total-cache', 'w3-total-cache.php');
+	repoLoadPluginFromZip('autoptimize', 'autoptimize.php');
+	repoLoadPluginFromZip('wp-smush-pro', 'wp-smush.php');
+	repoLoadPluginFromZip('product-import-export-for-woo', 'product-import-export-for-woo.php');
+	repoLoadPluginFromZip('wp-optimize', 'wp-optimize.php');
 	//repoLoadPluginFromStore();
 	
 });

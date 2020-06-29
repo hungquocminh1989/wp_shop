@@ -176,7 +176,7 @@ function my_bulk_action_handler( $redirect_to, $action, $post_ids ) {
 		$path_python = get_template_directory() . "/linux_shell_script/CreatePostToPages.py";
 		
 		//Execute shell script upload to facebook
-		$command = "sh $path_shell $path_python $excel_path $log_path";
+		$command = "sh $path_shell $path_python $log_path $excel_path";
 		$output = exec($command);
 		
 		//return;//Return download file
