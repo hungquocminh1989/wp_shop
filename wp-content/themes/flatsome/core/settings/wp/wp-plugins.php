@@ -36,6 +36,7 @@ add_action( 'after_setup_theme',  function(){
 	repoLoadPluginFromZip('wp-smush-pro', 'wp-smush.php');
 	repoLoadPluginFromZip('product-import-export-for-woo', 'product-import-export-for-woo.php');
 	repoLoadPluginFromZip('wp-optimize', 'wp-optimize.php');
+	repoLoadPluginFromZip('google-analytics-for-wordpress', 'googleanalytics.php');
 	//repoLoadPluginFromStore();
 	
 });
